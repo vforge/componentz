@@ -1,0 +1,11 @@
+.button {
+  background: red;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  padding: 6px 12px;
+}

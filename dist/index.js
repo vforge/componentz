@@ -664,6 +664,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
@@ -678,11 +680,35 @@ var _Button2 = _interopRequireDefault(_Button);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+/**
+ * Basic button component
+ */
 var Button = function Button(_ref) {
-  var children = _ref.children;
+  var className = _ref.className,
+      href = _ref.href,
+      text = _ref.text,
+      secondary = _ref.secondary,
+      square = _ref.square,
+      children = _ref.children,
+      rest = _objectWithoutProperties(_ref, ['className', 'href', 'text', 'secondary', 'square', 'children']);
+
+  var classes = [_Button2.default.button, className, secondary ? _Button2.default.secondary : _Button2.default.primary, square ? _Button2.default.square : '', text ? _Button2.default.text : ''].filter(function (c) {
+    return c;
+  }).join(' ');
+
+  if (href) {
+    return _react2.default.createElement(
+      'a',
+      _extends({ href: href, className: classes }, rest),
+      children
+    );
+  }
+
   return _react2.default.createElement(
     'button',
-    { className: _Button2.default.button },
+    _extends({ className: classes }, rest),
     children
   );
 };
@@ -691,7 +717,47 @@ Button.propTypes = {
   /**
    * @ignore
    */
-  children: _propTypes2.default.node.isRequired
+  children: _propTypes2.default.node,
+  /**
+   * href attribute.
+   * Button uses `<a>` tag if it's present.
+   */
+  href: _propTypes2.default.string,
+  /**
+   * Additional class name
+   */
+  className: _propTypes2.default.string,
+  /**
+   * Disabled attribute for the `<button>`
+   */
+  disabled: _propTypes2.default.bool,
+  /**
+   * Secondary flag
+   */
+  secondary: _propTypes2.default.bool,
+  /**
+   * Square flag
+   */
+  square: _propTypes2.default.bool,
+  /**
+   * Text flag
+   */
+  text: _propTypes2.default.bool,
+  /**
+   * Callback for the `<button>`
+   */
+  onClick: _propTypes2.default.func
+};
+
+Button.defaultProps = {
+  children: null,
+  className: '',
+  disabled: false,
+  href: null,
+  secondary: false,
+  square: false,
+  text: false,
+  onClick: function onClick() {}
 };
 
 exports.default = Button;
@@ -2871,11 +2937,15 @@ exports = module.exports = __webpack_require__(18)(false);
 
 
 // module
-exports.push([module.i, "._2a549UUQDkRyE6PxLpfJTh {\n  background: red;\n  border-radius: 3px;\n  border: 0;\n  color: #fff;\n  cursor: pointer;\n  font-size: inherit;\n  margin: 0;\n  padding: 0;\n  padding: 6px 12px;\n}\n", ""]);
+exports.push([module.i, "._2a549UUQDkRyE6PxLpfJTh {\n  border: 0;\n  border-radius: var(--z-radius);\n  color: #fff;\n  cursor: pointer;\n  font-size: inherit;\n  margin: 0;\n  padding: 6px 12px;\n  transition-duration: var(--z-transition-duration);\n  transition-timing-function: var(--z-transition-timing-function);\n}\n\n._1gH9yuPJQqGLfDV_KBGdow {\n  background-color: var(--z-theme-color-primary);\n  box-shadow: 0 0 1px var(--z-theme-color-primary-active);\n}\n\n._1gH9yuPJQqGLfDV_KBGdow:hover {\n  background-color: var(--z-theme-color-primary-active);\n  box-shadow: 0 0 3px var(--z-theme-color-primary-active);\n}\n\n._1gH9yuPJQqGLfDV_KBGdow:active {\n  background-color: var(--z-theme-color-primary-active);\n}\n\n._22F7iOwnl2HDpOWkNAEhQB {\n  background-color: var(--z-theme-color-secondary);\n  box-shadow: 0 0 1px var(--z-theme-color-secondary-active);\n}\n\n._22F7iOwnl2HDpOWkNAEhQB:hover {\n  background-color: var(--z-theme-color-secondary-active);\n  box-shadow: 0 0 3px var(--z-theme-color-secondary-active);\n}\n\n._22F7iOwnl2HDpOWkNAEhQB:active {\n  background-color: var(--z-theme-color-secondary-active);\n}\n\n._1XLUtWbHtI34R9DQ2aP-t7 {\n  background-color: transparent !important;\n  color: inherit !important;\n}\n\n._3PO4oU0qToYKiFwcJgm9Fe {\n  padding: 6px;\n}\n", ""]);
 
 // exports
 exports.locals = {
-	"button": "_2a549UUQDkRyE6PxLpfJTh"
+	"button": "_2a549UUQDkRyE6PxLpfJTh",
+	"primary": "_1gH9yuPJQqGLfDV_KBGdow",
+	"secondary": "_22F7iOwnl2HDpOWkNAEhQB",
+	"text": "_1XLUtWbHtI34R9DQ2aP-t7",
+	"square": "_3PO4oU0qToYKiFwcJgm9Fe"
 };
 
 /***/ }),

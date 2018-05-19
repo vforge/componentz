@@ -1,0 +1,11 @@
+:root {
+  --z-theme-color-black: #16161d;
+  --z-theme-color-primary: hsla(233, 71%, 36%, .75);
+  --z-theme-color-primary-active: hsl(233, 71%, 36%);
+  --z-theme-color-secondary: hsla(233, 51%, 36%, .75);
+  --z-theme-color-secondary-active: hsl(233, 51%, 36%);
+  --z-theme-color-text: #ddd;
+  --z-radius: 3px;
+  --z-transition-duration: .1s;
+  --z-transition-timing-function: ease-in-out;
+}

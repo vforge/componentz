@@ -7,6 +7,7 @@ module.exports = {
   title: '@vforge/componentz',
   theme,
   styles,
+  components: 'src/components/**/[A-Z]*.js',
   styleguideDir: './docs/',
   getComponentPathLine(componentPath) {
     const name = path.basename(path.dirname(componentPath));
@@ -16,5 +17,6 @@ module.exports = {
   },
   webpackConfig,
   require: [
+    path.join(__dirname, 'src/variables.css'),
   ],
 };

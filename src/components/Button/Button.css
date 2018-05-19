@@ -1,11 +1,48 @@
 .button {
-  background: red;
-  border-radius: 3px;
   border: 0;
+  border-radius: var(--z-radius);
   color: #fff;
   cursor: pointer;
   font-size: inherit;
   margin: 0;
-  padding: 0;
   padding: 6px 12px;
+  transition-duration: var(--z-transition-duration);
+  transition-timing-function: var(--z-transition-timing-function);
+}
+
+.primary {
+  background-color: var(--z-theme-color-primary);
+  box-shadow: 0 0 1px var(--z-theme-color-primary-active);
+}
+
+.primary:hover {
+  background-color: var(--z-theme-color-primary-active);
+  box-shadow: 0 0 3px var(--z-theme-color-primary-active);
+}
+
+.primary:active {
+  background-color: var(--z-theme-color-primary-active);
+}
+
+.secondary {
+  background-color: var(--z-theme-color-secondary);
+  box-shadow: 0 0 1px var(--z-theme-color-secondary-active);
+}
+
+.secondary:hover {
+  background-color: var(--z-theme-color-secondary-active);
+  box-shadow: 0 0 3px var(--z-theme-color-secondary-active);
+}
+
+.secondary:active {
+  background-color: var(--z-theme-color-secondary-active);
+}
+
+.text {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+.square {
+  padding: 6px;
 }
